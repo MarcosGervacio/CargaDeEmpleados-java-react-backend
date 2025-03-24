@@ -40,12 +40,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/auth/register", "/api/auth/verify").permitAll() // Permitir autenticación
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        // 🚀 Permitir que usuarios con ROLE_USER agreguen empleados
-                        .requestMatchers(HttpMethod.POST, "/rh-app/empleados").hasRole("ROLE_USER")
-
-                        // 🚀 Permitir que solo ROLE_ADMIN pueda eliminar empleados
-                        .requestMatchers(HttpMethod.DELETE, "/rh-app/empleados/**").hasRole("ROLE_ADMIN")
-
                         .anyRequest().authenticated() //  Protege todos los demas endpoints
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
