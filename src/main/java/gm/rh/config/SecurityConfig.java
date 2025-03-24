@@ -40,8 +40,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/auth/register", "/api/auth/verify").permitAll() // Permitir autenticación
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/rh-app/empleados").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/rh-app/empleados/**").hasRole("ADMIN")
                         .anyRequest().authenticated() //  Protege todos los demas endpoints
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
