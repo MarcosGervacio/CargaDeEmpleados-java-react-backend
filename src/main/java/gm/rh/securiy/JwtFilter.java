@@ -26,16 +26,6 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
-        String requestPath = request.getRequestURI();
-        System.out.println("🔍 Verificando ruta: " + requestPath);
-
-        // 🚀 Permitir acceso sin autenticación a /api/auth/login y /api/auth/register
-        if (requestPath.contains("/api/auth/login") || requestPath.contains("/api/auth/register")) {
-            System.out.println("✅ Ruta pública, no se requiere autenticación.");
-            chain.doFilter(request, response);
-            return;
-        }
-
         String authorizationHeader = request.getHeader("Authorization");
 
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
