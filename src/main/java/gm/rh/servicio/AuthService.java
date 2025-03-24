@@ -49,7 +49,7 @@ public class AuthService {
     }
 
     public void sendVerificationEmail(String email, String token) {
-        String url = "http://localhost:8080/api/auth/verify?token=" + token;
+        String url = "https://accurate-recreation-production.up.railway.app/api/auth/verify?token=" + token;
         String subject = "Confirma tu cuenta";
         String content = "<p>Haz clic en el siguiente enlace para activar tu cuenta:</p>"
                 + "<a href=\"" + url + "\">Activar cuenta</a>";
