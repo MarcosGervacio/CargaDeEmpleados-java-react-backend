@@ -31,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) { // recibe JSON
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         if (request.getEmail() == null || request.getPassword() == null) {
             return ResponseEntity.badRequest().body(Collections.singletonMap("message", "Faltan datos"));
         }
