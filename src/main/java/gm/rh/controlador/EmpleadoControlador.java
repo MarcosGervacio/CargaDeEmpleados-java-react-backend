@@ -83,5 +83,8 @@ public class EmpleadoControlador {
         return ResponseEntity.ok(respuesta);
     }
 
-
+    @GetMapping("/")
+    public String index() {
+        return "✅ API Viva en Railway";
+    }
 }
