@@ -82,9 +82,4 @@ public class EmpleadoControlador {
         respuesta.put("eliminado", Boolean.TRUE);
         return ResponseEntity.ok(respuesta);
     }
-
-    @GetMapping("/")
-    public String index() {
-        return "✅ API Viva en Railway";
-    }
 }
